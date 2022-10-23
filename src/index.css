@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --color-1: hsl(270, 3%, 87%);
+  --color-2: hsl(279, 6%, 55%);
+  --color-3: hsl(278, 68%, 11%);
+  --color-error: hsl(0, 100%, 66%);
+}
+.App {
+  background-image: url("../public/images/bg-main-desktop.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(36, 1fr);
+  grid-template-rows: repeat(36, 1fr);
+  width: 100vw;
+  height: 100vh;
+  font-size: 18px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  color: var(--color-3);
+}
+
+                                 /* input form */
+.dateInput {
+  display: flex;
+  align-self: flex-start;
+  justify-self: flex-start;
+}
+.cvc {
+  width: 50%;
+}
+.form-wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 419px;
+  grid-row: 11 / 30;
+  grid-column: 22 /32;
+}
+.form-wrap input {
+  height: 2.5rem;
+  font-family: inherit;
+  padding: 0.4rem;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  font-size: 13px;
+}
+.form-wrap form label input {
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid var(--color-1);
+  box-shadow: none;
+  cursor: pointer;
+}
+.form-wrap form label input:focus {
+  outline: none;
+  border: 2px solid var(--color-2);
+}
+.error-field {
+  outline: 3px solid var(--color-2);
+}
+.error-text {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-error);
+}
+.form-wrap form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+#month,
+#year {
+  width: 40%;
+  margin-right: 0.5rem;
+}
+button {
+  width: 100%;
+  height: 3.5rem;
+  color: white;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: var(--color-3);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.validation-error {
+  color: var(--color-error);
+  text-align: center;
+}
+.month {
+  display: block;
+}
+
+                                    /* front card */
+.cardName {
+  display: flex;
+  width: 100%;
+}
+.cardName span {
+  margin-left: auto;
+}
+.front-card-wrap {
+  position: absolute;
+  grid-row: 8;
+  grid-column: 5;
+  color: white;
+  user-select: none;
+}
+.front-data {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: flex-start;
+}
+.front-data img {
+  margin-bottom: 2.5rem;
+}
+.cardNumber{
+  font-size: 33px;
+}
+
+                                    /* back card */
+.back-card-wrap {
+  position: absolute;
+  grid-row: 19;
+  grid-column: 7;
+  display: flex;
+  align-items: center;
+  color: white;
+  user-select: none;
+}
+.back-card-wrap div {
+  position: relative;
+  right: 80px;
+}
+
+.cardValidatedScreen {
+  grid-row: 11 / 25;
+  grid-column: 22 /33;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 1000;
+  transition: all 1s ease;
+}
+.cardValidatedScreen > :nth-child(3) {
+  color: var(--color-2);
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+  gap: 3rem;
+  padding: 0;
+}
+
+                                  /* animations */
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fromTop {
+  0% {
+    transform: scale(0) translateY(-100%);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes fromBottom {
+  0% {
+    transform: scale(0) translateY(100%);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+.fade {
+  animation: fade 1s;
+}
+.from-top {
+  animation: fromTop 1s ease;
+}
+.from-bottom {
+  animation: fromBottom 1s ease;
+}
+
+@media only screen and (max-width: 1100px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../public/images/bg-main-mobile.png");
+  }
+  .front-card-wrap {
+    scale: 0.6;
+    left: -70px;
+    top: 70px;
+    z-index: 1;
+  }
+  .back-card-wrap {
+    position: relative;
+    scale: 0.6;
+    left: 0px;
+    margin-top: -1rem;
+    margin-bottom: 100px;
+  }
+  .form-wrap {
+    position: relative;
+    width: 350px;
+    align-self: center;
+  }
+}
